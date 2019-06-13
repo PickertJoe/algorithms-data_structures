@@ -20,7 +20,7 @@ class BinaryGate(LogicGate):
     """A class to simulate gates requiring two streams of input"""
 
     def __init__(self, n):
-        super().__init__(n)
+        LogicGate.__init__(self, n)
 
         self.pinA = None
         self.pinB = None
@@ -32,7 +32,10 @@ class BinaryGate(LogicGate):
             return self.pinA.getFrom().getOutput()
 
     def getPinB(self):
-        return int(input("Please enter Pin B input for gate " + self.getLabel() + ": "))
+        if self.pinB is None:
+            return int(input("Please enter Pin B input for gate " + self.getLabel() + ": "))
+        else:
+            return self.pinB.getFrom().getOutput()
 
     def setNextPin(self, source):
         if self.pinA is None:
@@ -48,7 +51,7 @@ class UnaryGate(LogicGate):
     """A class to similuate gates requiring only one stream of input"""
 
     def __init__(self, n):
-        super().__init__(n)
+        LogicGate.__init__(self, n)
 
         self.pin = None
 
@@ -69,7 +72,7 @@ class AndGate(BinaryGate):
     """A class to simulate a gate requiring both inputs to be T to pass T"""
 
     def __init__(self, n):
-        super().__init__(n)
+        BinaryGate.__init__(self, n)
 
     def performGateLogic(self):
 
@@ -84,12 +87,24 @@ class AndGate(BinaryGate):
 class NandGate(BinaryGate):
     """A class to simulate a gate requiring both inputs to be T to pass F"""
 
+    def __init__(self, n):
+        BinaryGate.__init__(self, n)
+
+    def performGateLogic(self):
+
+        a = self.getPinA()
+        b = self.getPinB()
+        if a == 1 and b == 1:
+            return 0
+        else:
+            return 1
+
 
 class OrGate(BinaryGate):
     """A class to simulate a gate requiring only one input to be T to pass T"""
 
     def __init__(self, n):
-        super().__init__(n)
+        BinaryGate.__init__(self, n)
 
     def performGateLogic(self):
 
@@ -101,11 +116,43 @@ class OrGate(BinaryGate):
             return 0
 
 
+class NorGate(BinaryGate):
+    """A class to simulate a gate requiring both outputs to be F to pass T"""
+
+    def __init__(self, n):
+        BinaryGate.__init__(self, n)
+
+    def performGateLogic(self):
+
+        a = self.getPinA
+        b = self.getPinB
+        if a == 0 and b == 0:
+            return 1
+        else:
+            return 0
+
+
+class XorGate(BinaryGate):
+    """A class to simulate a gate that returns T if inputs are different"""
+
+    def __init__(self, n):
+        BinaryGate.__init__(self, n)
+
+    def performGateLogic(self):
+
+        a = self.getPinA
+        b = self.getPinB
+        if a != b:
+            return 1
+        else:
+            return 0
+
+
 class NotGate(UnaryGate):
     """A class to simulate a gate that reverses the boolean of the input it receives"""
 
     def __init__(self, n):
-        super().__init__(n)
+        UnaryGate.__init__(self, n)
 
     def performGateLogic(self):
 
@@ -131,17 +178,3 @@ class Connector:
 
     def getTo(self):
         return self.togate
-
-
-def main():
-    g1 = AndGate("G1")
-    g2 = AndGate("G2")
-    g3 = OrGate("G3")
-    g4 = NotGate("G4")
-    c1 = Connector(g1, g3)
-    c2 = Connector(g2, g3)
-    c3 = Connector(g3, g4)
-    print(g3.getOutput())
-
-
-main()
