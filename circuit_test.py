@@ -2,7 +2,7 @@
 
 from circuit_class import *
 
-
+# If user enters 0,1,1,1 in the order prompted
 # Running the test; end result should be 0, or False
 def main():
     g1 = AndGate("G1")
@@ -12,7 +12,7 @@ def main():
     c1 = Connector(g1, g3)
     c2 = Connector(g2, g3)
     c3 = Connector(g3, g4)
-    print(g3.getOutput())
+    print(g4.getOutput())
 
 
 main()

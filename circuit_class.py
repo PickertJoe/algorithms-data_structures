@@ -5,11 +5,11 @@ class LogicGate():
     """A master class to serve as a parent for later gates"""
 
     def __init__(self, n):
-        self.label = n
+        self.Name = n
         self.output = None
 
-    def getLabel(self):
-        return self.label
+    def getName(self):
+        return self.Name
 
     def getOutput(self):
         self.output = self.performGateLogic()
@@ -27,13 +27,13 @@ class BinaryGate(LogicGate):
 
     def getPinA(self):
         if self.pinA is None:
-            return int(input("Please enter Pin A input for gate " + self.getLabel() + ": "))
+            return int(input("Please enter Pin A input for gate " + self.getName() + ": "))
         else:
             return self.pinA.getFrom().getOutput()
 
     def getPinB(self):
         if self.pinB is None:
-            return int(input("Please enter Pin B input for gate " + self.getLabel() + ": "))
+            return int(input("Please enter Pin B input for gate " + self.getName() + ": "))
         else:
             return self.pinB.getFrom().getOutput()
 
@@ -57,7 +57,7 @@ class UnaryGate(LogicGate):
 
     def getPin(self):
         if self.pin is None:
-            return int(input("Please enter Pin input for gate " + self.getLabel() + ": "))
+            return int(input("Please enter Pin input for gate " + self.getName() + ": "))
         else:
             return self.pin.getFrom().getOutput()
 
@@ -108,8 +108,8 @@ class OrGate(BinaryGate):
 
     def performGateLogic(self):
 
-        a = self.getPinA
-        b = self.getPinB
+        a = self.getPinA()
+        b = self.getPinB()
         if a == 1 or b == 1:
             return 1
         else:
@@ -124,8 +124,8 @@ class NorGate(BinaryGate):
 
     def performGateLogic(self):
 
-        a = self.getPinA
-        b = self.getPinB
+        a = self.getPinA()
+        b = self.getPinB()
         if a == 0 and b == 0:
             return 1
         else:
@@ -140,8 +140,8 @@ class XorGate(BinaryGate):
 
     def performGateLogic(self):
 
-        a = self.getPinA
-        b = self.getPinB
+        a = self.getPinA()
+        b = self.getPinB()
         if a != b:
             return 1
         else:
@@ -156,7 +156,7 @@ class NotGate(UnaryGate):
 
     def performGateLogic(self):
 
-        a = self.getPin
+        a = self.getPin()
 
         if a == 1:
             return 0
