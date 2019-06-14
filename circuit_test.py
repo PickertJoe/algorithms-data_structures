@@ -4,6 +4,8 @@ from circuit_class import *
 
 # If user enters 0,1,1,1 in the order prompted
 # Running the test; end result should be 0, or False
+
+
 def main():
     g1 = AndGate("G1")
     g2 = AndGate("G2")
