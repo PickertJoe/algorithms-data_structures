@@ -80,7 +80,7 @@ def grab_input():
                 print("The character " + token + " is invalid.")
                 flag = True
 
-        if (inc2 - inc1) == 1 and flag is True:
+        if (inc2 - inc1) == 1 and flag is False:
             return tokenList, postfixexpr
         else:
             print("\nError detected in input string.")
