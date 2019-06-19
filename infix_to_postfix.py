@@ -65,7 +65,7 @@ def infixToPostfix(tokenList):
 def grab_input():
     """A function to collect and screen user input to prevent errors"""
     while True:
-        prompt = ("\nPlease enter an appropriate infix arithmetic expression.")
+        prompt = ("\nPlease enter an appropriate infix arithmetic expression (using letters).")
         prompt += ("\nEnsure to separate each character by a space: ")
         infexexpr = input(prompt)
 
