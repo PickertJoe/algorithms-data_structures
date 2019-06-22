@@ -57,3 +57,5 @@ class UnorderedList:
             previous.setNext(current.getNext())
 
     def pop(self):
+
+    def index(self):
