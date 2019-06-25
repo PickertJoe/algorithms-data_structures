@@ -103,20 +103,18 @@ class UnorderedList:
         else:
             return counter
 
+    def insert(self, item, index):
+        current = self.head
+        previous = None
+        counter = self.length() - 1
+        while counter > index:
+            previous = current
+            current = current.getNext()
+            counter -= 1
 
-mylist = UnorderedList()
+        temp = Node(item)
+        if previous is None:
+            self.head = temp
 
-mylist.add(1)
-mylist.add(2)
-mylist.add(3)
-mylist.add(4)
-mylist.add(5)
-mylist.add(6)
-mylist.add(7)
-mylist.add(8)
-print(mylist.pop(5))
-print(mylist.pop())
-print(mylist.pop())
-mylist.append(1)
-print(mylist.pop())
-print(mylist.index(5))
+        previous.setNext(temp)
+        temp.setNext(current)
