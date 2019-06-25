@@ -56,6 +56,37 @@ class UnorderedList:
         else:
             previous.setNext(current.getNext())
 
-    def pop(self):
+    def pop(self, index=0):
+        current = self.head
+        previous = None
+        current_position = 0
 
-    def index(self):
+        if index == 0:
+            position = self.length()
+        else:
+            position = self.length() - (index + 1)
+
+        while current.getNext() and (current_position < position):
+            previous = current
+            current = current.getNext()
+            current_position += 1
+
+        if previous is None:
+            self.head = current.getNext()
+        else:
+            previous.setNext(current.getNext())
+
+        return current.getData()
+
+
+mylist = UnorderedList()
+
+mylist.add(1)
+mylist.add(2)
+mylist.add(3)
+mylist.add(4)
+mylist.add(5)
+mylist.add(6)
+mylist.add(7)
+mylist.add(8)
+print(mylist.pop(5))

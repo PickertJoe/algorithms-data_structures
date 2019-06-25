@@ -9,7 +9,7 @@ class Node:
     def getData(self):
         return self.data
 
-    def getNext(self,):
+    def getNext(self):
         return self.next
 
     def setData(self, newdata):
@@ -17,4 +17,3 @@ class Node:
 
     def setNext(self, newnext):
         self.next = newnext
-
