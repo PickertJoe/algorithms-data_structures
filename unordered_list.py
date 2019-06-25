@@ -78,6 +78,31 @@ class UnorderedList:
 
         return current.getData()
 
+    def append(self, item):
+        current = self.head
+        while current.getNext():
+            current = current.getNext()
+
+        temp = Node(item)
+        current.setNext(temp)
+
+    def index(self, item):
+        current = self.head
+        found = False
+        counter = self.length() - 1
+        while current is not None and not found:
+            if current.getData() == item:
+                found = True
+            else:
+                current = current.getNext()
+                counter -= 1
+
+        if found is False:
+            print("Sorry, but that number was not found in this list")
+
+        else:
+            return counter
+
 
 mylist = UnorderedList()
 
@@ -90,3 +115,7 @@ mylist.add(6)
 mylist.add(7)
 mylist.add(8)
 print(mylist.pop(5))
+print(mylist.pop())
+print(mylist.pop())
+mylist.append(1)
+print(mylist.pop(0))
