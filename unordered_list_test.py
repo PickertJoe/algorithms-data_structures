@@ -21,13 +21,9 @@ class ULTestCase(unittest.TestCase):
     def test_UL_remove(self):
         """Ensures that remove method funcitons properly"""
         remove_list = UnorderedList()
-        remove_list.add(8)
-        remove_list.add(5)
-        remove_list.add(6)
-        remove_list.add(2)
-        remove_list.add(9)
-        remove_list.remove(8)
-        self.assertEqual(False, remove_list.search(8))
+        for number in range(0, 9):
+            remove_list.add(number)
+        self.assertEqual(False, remove_list.search(9))
 
     def test_UL_length(self):
         """Ensures that length method functions properly"""
@@ -67,6 +63,14 @@ class ULTestCase(unittest.TestCase):
             insert_list.add(number)
         insert_list.insert(12, 5)
         self.assertEqual(12, insert_list.pop(6))
+
+    def test_UL_remove_notfound(self):
+        """Ensures that the remove function can handle the situation in which a user requests to
+        remove a value that is not in the list"""
+        rm_notfound_list = UnorderedList()
+        for number in range(0, 9):
+            rm_notfound_list.add(number)
+        self.assertEqual(False, rm_notfound_list.remove(15))
 
 
 unittest.main()

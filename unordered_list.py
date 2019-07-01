@@ -1,6 +1,6 @@
 # A class to simulate the ADT of unordered lists
 # The methods isEmpty, add, length, search, and remove were included by Miller & Ranum in the text
-# The methods append, insert, index, and pop were created by me
+# The methods append, insert, index, and pop were implimented by me
 
 
 from node_class import Node
@@ -11,23 +11,19 @@ class UnorderedList:
 
     def __init__(self):
         self.head = None
+        self.len = 0
 
     def isEmpty(self):
-        return self.head is None
+        return self.len == 0
 
     def add(self, item):
         temp = Node(item)
         temp.setNext(self.head)
         self.head = temp
+        self.len += 1
 
     def length(self):
-        current = self.head
-        count = 0
-        while current is not None:
-            count += 1
-            current = current.getNext()
-
-        return count
+        return self.len
 
     def search(self, item):
         current = self.head
@@ -47,6 +43,9 @@ class UnorderedList:
         while not found:
             if current.getData() == item:
                 found = True
+            elif current is None:
+                print("Sorry, but the number you requested is not in the list.")
+                return False
             else:
                 previous = current
                 current = current.getNext()
@@ -55,6 +54,7 @@ class UnorderedList:
             self.head = current.getNext()
         else:
             previous.setNext(current.getNext())
+        self.len -= 1
 
     def pop(self, index=0):
         current = self.head
@@ -76,6 +76,8 @@ class UnorderedList:
         else:
             previous.setNext(current.getNext())
 
+        self.len -= 1
+
         return current.getData()
 
     def append(self, item):
@@ -85,6 +87,8 @@ class UnorderedList:
 
         temp = Node(item)
         current.setNext(temp)
+
+        self.len += 1
 
     def index(self, item):
         current = self.head
@@ -118,3 +122,5 @@ class UnorderedList:
 
         previous.setNext(temp)
         temp.setNext(current)
+
+        self.len += 1
