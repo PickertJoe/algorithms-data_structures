@@ -40,7 +40,7 @@ class UnorderedList:
         current = self.head
         previous = None
         found = False
-        while not found:
+        while current is not None and not found:
             if current == item:
                 found = True
             elif current is None:
@@ -49,12 +49,15 @@ class UnorderedList:
             else:
                 previous = current
                 current = current.getNext()
-
-        if previous is None:
-            self.head = current.getNext()
+        if not found:
+            print("Sorry, but the number you requested is not in the list.")
+            return False
         else:
-            previous.setNext(current.getNext())
-        self.len -= 1
+            if previous is None:
+                self.head = current.getNext()
+            else:
+                previous.setNext(current.getNext())
+            self.len -= 1
 
     def pop(self, index=0):
         current = self.head
