@@ -41,14 +41,12 @@ class UnorderedList:
         previous = None
         found = False
         while current is not None and not found:
-            if current == item:
+            if current.getData() == item:
                 found = True
-            elif current is None:
-                print("Sorry, but the number you requested is not in the list.")
-                return False
             else:
                 previous = current
                 current = current.getNext()
+
         if not found:
             print("Sorry, but the number you requested is not in the list.")
             return False

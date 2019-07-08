@@ -66,7 +66,8 @@ class ULTestCase(unittest.TestCase):
 
     def test_UL_remove_notfound(self):
         """Ensures that the remove function can handle the situation in which a user requests to
-        remove a value that is not in the list"""
+        remove a value that is not in the list
+        Message should print in addition to test pass/fail"""
         rm_notfound_list = UnorderedList()
         for number in range(0, 9):
             rm_notfound_list.add(number)
