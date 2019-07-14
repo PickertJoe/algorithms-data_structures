@@ -9,7 +9,7 @@ class Stack:
         return self.items == []
 
     def push(self, item):
-        return self.items.append(item)
+        returnself.items.append(item)
 
     def pop(self):
         return self.items.pop()
