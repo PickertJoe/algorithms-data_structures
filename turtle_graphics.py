@@ -1,4 +1,6 @@
 # A program to draw a spiral using turtle graphics
+# This code cannot be properly run in Sublime Text and should be copy/pasted into
+# The default Python IDLE editor
 
 from turtle import *
 
