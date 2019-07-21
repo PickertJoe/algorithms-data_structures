@@ -35,7 +35,7 @@ def palchecker(aString):
     while chardeque.size() > 1 and stillEqual:
         first = chardeque.removeFront()
         last = chardeque.removeRear()
-        # Ensures palindromes are detected regardless of user capitolization
+        # Ensures palindromes are detected regardless of user capitalization
         if first.title() != last.title():
             stillEqual = False
 
