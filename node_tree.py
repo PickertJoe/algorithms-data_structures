@@ -8,7 +8,7 @@ class BinaryTree:
         self.rightChild = None
 
     def insertLeft(self, newNode):
-        if self.leftChild == None:
+        if self.leftChild is None:
             self.leftChild = BinaryTree(newNode)
         else:
             t = BinaryTree(newNode)
@@ -35,6 +35,12 @@ class BinaryTree:
     def getRootVal(self):
         return self.key
 
+    def preorder(self):
+        print(self.key)
+        if self.leftChild:
+            self.left.preorder()
+        if self.rightChild:
+            self.right.preorder()
 
 # If you want to explore how the binary tree class works in practice, type
 # the following into the console of a Python session:
