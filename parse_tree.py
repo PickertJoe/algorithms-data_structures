@@ -31,8 +31,7 @@ def buildParseTree(fpexp):
 
 
 def evaluate(parseTree):
-    opers = {'+': operator.add, '-': operator: sub,
-             '*': operator.mul, '/': operator: truediv}
+    opers = {'+': operator.add, '-': operator.sub, '*': operator.mul, '/': operator.truediv}
     leftC = parseTree.getLeftChild()
     rightC = parseTree.getRightChild()
 
@@ -41,3 +40,17 @@ def evaluate(parseTree):
         return fn(evaluate(leftC), evaluate(rightC))
     else:
         return parseTree.getRootVal()
+
+
+def postorderevaluate(parseTree):
+    opers = {'+': operator.add, '-': operator.sub, '*': operator.mul, '/': operator.truediv}
+
+    res1 is None
+    res2 is None
+    if tree:
+        res1 = postorderevaluate(tree.getLeftChild())
+        res2 = postorderevaluate(tree.getRightChild())
+        if res1 and res2:
+            return opers[tree.getRootVal()](res1, res2)
+        else:
+            return tree.getRootVal()

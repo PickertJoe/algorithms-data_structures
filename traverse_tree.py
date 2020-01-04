@@ -6,3 +6,10 @@ def preorder(tree):
         print(tree.getRootVal())
         preorder(tree.getLeftChild())
         preorder(tree.getRightChild())
+
+
+def postorder(tree):
+    if tree is not None:
+        postorder(tree.getLeftChild())
+        postorder(tree.getRightChild())
+        print(tree.getRootVal())
